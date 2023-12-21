@@ -1,5 +1,6 @@
 package com.example.code.Model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,6 +14,7 @@ public class Code {
   @GeneratedValue(strategy=GenerationType.AUTO)
   public Integer id;
 
+  @Column(unique = true)
   private String name;
 
   private String css_code;
