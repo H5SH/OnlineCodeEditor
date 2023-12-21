@@ -22,8 +22,9 @@ function App() {
   let run = ()=> {
   let output = document.getElementById('output');
 
-  output.contentDocument.body.innerHTML = `${state.html_code} <style> ${state.css_code} </style> <script>${state.js_code}</script>` ;
-  // output.contentWindow.eval(jscode);
+  output.contentDocument.body.innerHTML = `${state.html_code} <style> ${state.css_code} </style>` ;
+  // console.log(state.js_code)
+  // output.contentWindow.eval(state.js_code);
   }
 
   function Files(){
@@ -199,7 +200,7 @@ function App() {
             <textarea id="css-code" value={state.css_code} className="code" onKeyUp={run} onChange={setCss_code}></textarea>
 
             <label>JavaScript</label>
-            <textarea id="js-code" value={state.js_code} className="code"  onChange={setJs_code}></textarea>
+            <textarea id="js-code" value={state.js_code} className="code" onKeyUp={run}  onChange={setJs_code}></textarea>
             <button type='submit' id='submit'>Save</button>
             </form>
             
