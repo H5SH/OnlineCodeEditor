@@ -28,19 +28,10 @@ public class MainController {
     CodeRepo repo;
 
     @PostMapping("/saved")
-    public String home(Code code){
-        // if (id != 0 )
-        // {
-        //     Optional<Code> c = repo.findById(id);
-        //     if(c.isPresent())
-        //     {
-        //         repo.deleteById(id);
-        //         repo.save(code);
-        //         return "Updated";
-        //     }
-        // }
+    public Code home(Code code){
+       
         repo.save(code);
-        return "save";
+        return code;
     }
 
     @GetMapping("/Editor")
@@ -65,16 +56,10 @@ public class MainController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public String delete(@PathVariable int id){
-        Optional<Code> c = repo.findById(id);
-        if(c.isPresent())
-        {
-            repo.deleteById(id);
-            return "Deleted";
-        }
-        else{
-            return "Wrong id";
-        }
+    public Code delete(@PathVariable int id){
+        Code c = repo.findById(id).orElseThrow();
+        repo.delete(c);
+        return c;
     }
     
 }
